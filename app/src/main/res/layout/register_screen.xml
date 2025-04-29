@@ -14,20 +14,17 @@
     <!-- App Logo/Title -->
 
     <!-- Sign Up Header -->
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
-        android:layout_marginBottom="48dp"
-        android:fontFamily="serif"
-        android:text="Food Dude"
-        android:textColor="#57270A"
-        android:textSize="35sp"
-        android:textStyle="bold" />
+
+    <ImageView
+        android:id="@+id/appLogo_reg"
+        android:layout_width="262dp"
+        android:layout_height="144dp"
+        android:src="@drawable/ic_food_dude_logo" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
         android:layout_marginBottom="8dp"
         android:text="Create an account"
         android:textColor="@android:color/black"
@@ -70,7 +67,7 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="16dp"
         android:background="#472108"
-        android:text="Continue"
+        android:text="Register"
         android:textAllCaps="false"
         android:textColor="@color/primaryColor"
         android:textSize="14sp"
@@ -134,5 +131,12 @@
         android:text="By clicking continue, you agree to our Terms of Service and Privacy Policy"
         android:textColor="#474646"
         android:textSize="12sp" />
+
+    <ProgressBar
+        android:id="@+id/progressBar"
+        android:visibility="gone"
+        android:layout_marginTop="20dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
 
 </LinearLayout>
