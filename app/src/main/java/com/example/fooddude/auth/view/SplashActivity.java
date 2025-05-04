@@ -1,4 +1,4 @@
-package com.example.fooddude;
+package com.example.fooddude.auth.view;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -25,8 +25,8 @@ public class SplashActivity extends AppCompatActivity
         // Move to next activity after animation
         new Handler().postDelayed(() ->
         {
-            startActivity(new Intent(SplashActivity.this, RegisterActivity.class));
+            startActivity(new Intent(SplashActivity.this, SignInActivity.class));
             finish();
-        }, 12500); // 12.5 seconds
+        }, 10000); // 10 seconds
     }
 }

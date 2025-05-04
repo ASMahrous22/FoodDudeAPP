@@ -23,12 +23,14 @@
         app:boxBackgroundMode="outline">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/emailEditText"
+            android:id="@+id/signInEmail"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@color/textSecondary"
             android:hint="Email"
-            android:inputType="textEmailAddress" />
+            android:inputType="textEmailAddress"
+            android:textColor="@color/textPrimary"
+            android:textColorLink="@color/textPrimary" />
 
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -39,12 +41,14 @@
         app:boxBackgroundMode="outline">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/passwordEditText"
+            android:id="@+id/signInPassword"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@color/textSecondary"
             android:hint="Password"
-            android:inputType="textPassword" />
+            android:inputType="textPassword"
+            android:textColor="@color/textPrimary"
+            android:textColorLink="@color/textPrimary" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <Button
@@ -53,7 +57,9 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="16dp"
         android:backgroundTint="@color/textPrimary"
-        android:text="Sign In" />
+        android:text="Sign In"
+        android:textColor="@color/textSecondary"
+        android:textColorLink="@color/dividerColor" />
 
     <TextView
         android:id="@+id/registerPromptText2"
@@ -92,6 +98,7 @@
         android:text="Sign in with Google"
         android:textAlignment="center"
         android:textColor="@color/textSecondary"
+        android:textColorLink="@color/textSecondary"
         app:icon="@drawable/ic_google"
         app:iconPadding="0dp"
         app:iconTint="@color/textSecondary"
@@ -104,6 +111,16 @@
         android:layout_height="wrap_content"
         android:backgroundTint="@color/textPrimary"
         android:text="Continue as Guest"
-        android:textColor="@color/textSecondary" />
+        android:textColor="@color/textSecondary"
+        android:textColorLink="@color/textSecondary" />
 
+    <ProgressBar
+        android:id="@+id/progressBar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:layout_marginBottom="10dp"
+        android:indeterminateTint="@color/ic_app_logo_background"
+        android:visibility="gone"
+        />
 </LinearLayout>

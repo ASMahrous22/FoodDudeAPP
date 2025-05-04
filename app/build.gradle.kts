@@ -1,5 +1,6 @@
 plugins {
     alias(libs.plugins.android.application)
+    alias(libs.plugins.google.services)
 }
 
 android {
@@ -38,6 +39,8 @@ dependencies {
     implementation(libs.activity)
     implementation(libs.constraintlayout)
     implementation ("com.github.bumptech.glide:glide:4.15.1")
+    implementation ("com.google.firebase:firebase-auth:21.1.0")
+    implementation ("com.google.android.gms:play-services-auth:20.7.0")
     implementation ("com.google.android.material:material:1.9.0")
     implementation ("com.squareup.retrofit2:retrofit:2.9.0")
     implementation ("com.airbnb.android:lottie:6.3.0")

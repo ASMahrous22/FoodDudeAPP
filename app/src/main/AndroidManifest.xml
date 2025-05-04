@@ -14,7 +14,7 @@
         tools:targetApi="31">
 
         <activity
-            android:name=".SplashActivity"
+            android:name=".auth.view.SplashActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -22,10 +22,8 @@
             </intent-filter>
         </activity>
 
-        <activity
-            android:name=".RegisterActivity"
-            android:exported="true">
-        </activity>
+        <activity android:name=".auth.view.SignInActivity"/>
+        <activity android:name=".auth.view.RegisterActivity"/>
 
         <activity
             android:name=".MainActivity"
