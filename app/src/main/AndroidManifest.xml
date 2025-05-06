@@ -24,6 +24,7 @@
 
         <activity android:name=".auth.view.SignInActivity"/>
         <activity android:name=".auth.view.RegisterActivity"/>
+        <activity android:name=".randommeal.view.activity.RandomMealActivity"/>
 
         <activity
             android:name=".MainActivity"
@@ -34,5 +35,7 @@
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />
     </application>
+
+    <uses-permission android:name="android.permission.INTERNET" />
 
 </manifest>

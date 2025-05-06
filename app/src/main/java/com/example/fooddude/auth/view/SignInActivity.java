@@ -11,6 +11,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 import com.example.fooddude.R;
+import com.example.fooddude.randommeal.view.activity.RandomMealActivity;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
@@ -19,6 +20,7 @@ import com.google.android.gms.common.api.ApiException;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthCredential;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.GoogleAuthProvider;
 
 public class SignInActivity extends AppCompatActivity
@@ -97,14 +99,7 @@ public class SignInActivity extends AppCompatActivity
 
         registerLink.setOnClickListener(v -> startActivity(new Intent(SignInActivity.this, RegisterActivity.class)));
 
-        btnGuest.setOnClickListener(v -> {
-            // Set guest mode flag
-            SharedPreferences prefs = getSharedPreferences("FoodDudePrefs", MODE_PRIVATE);
-            prefs.edit().putBoolean("isGuest", true).apply();
-
-            // Navigate to MainActivity
-            startActivity(new Intent(SignInActivity.this, MainActivity.class));
-        });
+        btnGuest.setOnClickListener(v -> signInAnonymously());
     }
 
     private void signInWithGoogle()
@@ -114,20 +109,25 @@ public class SignInActivity extends AppCompatActivity
     }
 
     @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+    protected void onActivityResult(int requestCode, int resultCode, Intent data)
+    {
         super.onActivityResult(requestCode, resultCode, data);
-
-        if (requestCode == 101) {
+        if (requestCode == 101)
+        {
             Task<GoogleSignInAccount> task = GoogleSignIn.getSignedInAccountFromIntent(data);
             handleGoogleSignInResult(task);
         }
     }
 
-    private void handleGoogleSignInResult(Task<GoogleSignInAccount> completedTask) {
-        try {
+    private void handleGoogleSignInResult(Task<GoogleSignInAccount> completedTask)
+    {
+        try
+        {
             GoogleSignInAccount account = completedTask.getResult(ApiException.class);
             firebaseAuthWithGoogle(account);
-        } catch (ApiException e) {
+        }
+        catch (ApiException e)
+        {
             Toast.makeText(this, "Google Sign-In failed: " + e.getMessage(), Toast.LENGTH_LONG).show();
         }
     }
@@ -151,15 +151,33 @@ public class SignInActivity extends AppCompatActivity
                     }
                 });
     }
+    private void signInAnonymously()
+    {
+        FirebaseAuth.getInstance().signInAnonymously()
+                .addOnCompleteListener(this, task -> {
+                    if (task.isSuccessful())
+                    {
+                        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+                        Toast.makeText(this, "Logged in as guest", Toast.LENGTH_SHORT).show();
+                        startActivity(new Intent(this, RandomMealActivity.class));
+                        finish();
+                    }
+                    else
+                    {
+                        Toast.makeText(this, "Guest login failed", Toast.LENGTH_SHORT).show();
+                    }
+                });
+    }
 
     @Override
     protected void onStart()
     {
         super.onStart();
-        // if user is already signed in, go directly to MainActivity
-        if (FirebaseAuth.getInstance().getCurrentUser() != null)
+        // If user is already signed in & not signed in as guest, go directly to Meal Of The Day Activity
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        if (user != null && !user.isAnonymous())
         {
-            startActivity(new Intent(SignInActivity.this, MainActivity.class));
+            startActivity(new Intent(this, RandomMealActivity.class));
             finish();
         }
     }
