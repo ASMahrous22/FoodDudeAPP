@@ -1,5 +1,13 @@
 <resources>
     <string name="app_name">FoodDude</string>
     <string name="default_web_client_id">855331891918-l98lmovlgre9vsei2etgtd20gcn8o5nl.apps.googleusercontent.com</string>
+    <string name="category_image_desc">Meal category image</string>
+
+    <string-array name="filter_options">
+        <item>Name</item>
+        <item>Country</item>
+        <item>Ingredient</item>
+        <item>Category</item>
+    </string-array>
 
 </resources>

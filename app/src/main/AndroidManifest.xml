@@ -22,13 +22,17 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".auth.view.SignInActivity"/>
-        <activity android:name=".auth.view.RegisterActivity"/>
-        <activity android:name=".randommeal.view.activity.RandomMealActivity"/>
+    <activity android:name=".auth.view.SignInActivity" />
+    <activity android:name=".auth.view.RegisterActivity" />
+    <activity android:name=".meal.view.activity.RandomMealActivity" />
+    <activity android:name=".meal.view.activity.NavigationActivity" />
+    <activity android:name=".meal.view.activity.SearchActivity" />
+    <activity android:name=".meal.view.activity.CountryActivity" />
+    <activity android:name=".meal.view.activity.FavoritesActivity" />
+    <activity android:name=".meal.view.activity.MealDetailsActivity" />
+    <activity android:name=".meal.view.activity.WeeklyPlanActivity" />
+    <activity android:name=".meal.view.activity.ProfileActivity" />
 
-        <activity
-            android:name=".MainActivity"
-            android:exported="true" />
 
         <!-- Optional: preload fonts -->
         <meta-data
@@ -37,5 +41,7 @@
     </application>
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.WRITE_CALENDAR" />
+    <uses-permission android:name="android.permission.READ_CALENDAR" />
 
 </manifest>

@@ -1,7 +1,6 @@
 package com.example.fooddude.auth.view;
 
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -10,8 +9,9 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.example.fooddude.meal.view.activity.NavigationActivity;
 import com.example.fooddude.R;
-import com.example.fooddude.randommeal.view.activity.RandomMealActivity;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
@@ -86,7 +86,7 @@ public class SignInActivity extends AppCompatActivity
                         {
                             // Navigate to MainActivity
                             Toast.makeText(this, "Login successful", Toast.LENGTH_SHORT).show();
-                            startActivity(new Intent(SignInActivity.this, MainActivity.class));
+                            startActivity(new Intent(SignInActivity.this, NavigationActivity.class));
                             finish();
                         }
                         else
@@ -141,7 +141,7 @@ public class SignInActivity extends AppCompatActivity
                     {
                         // Navigate to MainActivity
                         Toast.makeText(this, "Google Sign-In successful", Toast.LENGTH_SHORT).show();
-                        startActivity(new Intent(SignInActivity.this, MainActivity.class));
+                        startActivity(new Intent(SignInActivity.this, NavigationActivity.class));
                         finish();
                     }
                     else
@@ -159,7 +159,7 @@ public class SignInActivity extends AppCompatActivity
                     {
                         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
                         Toast.makeText(this, "Logged in as guest", Toast.LENGTH_SHORT).show();
-                        startActivity(new Intent(this, RandomMealActivity.class));
+                        startActivity(new Intent(this, NavigationActivity.class));
                         finish();
                     }
                     else
@@ -177,7 +177,7 @@ public class SignInActivity extends AppCompatActivity
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
         if (user != null && !user.isAnonymous())
         {
-            startActivity(new Intent(this, RandomMealActivity.class));
+            startActivity(new Intent(this, NavigationActivity.class));
             finish();
         }
     }
